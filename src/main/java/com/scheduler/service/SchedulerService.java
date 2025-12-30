@@ -87,4 +87,13 @@ public class SchedulerService {
                 scheduler.getModifiedAt()
         );
     }
+
+    @Transactional
+    public void delete(Long schedulerId) {
+        boolean existence = schedulerRepository.existsById(schedulerId);
+        if (!existence) {
+            throw new IllegalStateException("존재하지 않는 게시글 입니다.");
+        }
+        schedulerRepository.deleteById(schedulerId);
+    }
 }
