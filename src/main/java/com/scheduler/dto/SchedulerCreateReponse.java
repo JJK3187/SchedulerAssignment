@@ -1,12 +1,11 @@
 package com.scheduler.dto;
 
-import jakarta.persistence.Column;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
 
 @Getter
-public class SchedulerReponse {
+public class SchedulerCreateReponse {
 
     private final Long id;
     private final String contentsName;
@@ -17,7 +16,7 @@ public class SchedulerReponse {
     private final LocalDateTime modifiedAt;
 
 
-    public SchedulerReponse(Long id, String contentsName, String contents, String name, String password, LocalDateTime createdAt, LocalDateTime modifiedAt) {
+    public SchedulerCreateReponse(Long id, String contentsName, String contents, String name, String password, LocalDateTime createdAt, LocalDateTime modifiedAt) {
         this.id = id;
         this.contentsName = contentsName;
         this.contents = contents;
