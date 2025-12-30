@@ -30,11 +30,10 @@ public class Scheduler extends BaseEntity{
         this.password = password;
     }
 
-    public void update(String contentsName, String contents, String name, String password) {
+    public void update(String contentsName,String name) {
         this.contentsName = contentsName;
-        this.contents = contents;
         this.name = name;
-        this.password = password;
+
     }
 
 

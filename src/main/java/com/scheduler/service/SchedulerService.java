@@ -1,8 +1,6 @@
 package com.scheduler.service;
 
-import com.scheduler.dto.SchedulerCreateReponse;
-import com.scheduler.dto.SchedulerCreateRequest;
-import com.scheduler.dto.SchedulerGetResponse;
+import com.scheduler.dto.*;
 import com.scheduler.entity.Scheduler;
 import com.scheduler.repository.SchedulerRepository;
 import lombok.RequiredArgsConstructor;
@@ -62,6 +60,25 @@ public class SchedulerService {
                 () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
         );
         return new SchedulerGetResponse(
+                scheduler.getId(),
+                scheduler.getContentsName(),
+                scheduler.getContents(),
+                scheduler.getName(),
+                scheduler.getCreatedAt(),
+                scheduler.getModifiedAt()
+        );
+    }
+
+    @Transactional
+    public SchedulerUpdateResponse update(Long schedulerId, SchedulerUpdateRequest request) {
+        Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
+        );
+        scheduler.update(
+                request.getContentsName(),
+                request.getName()
+        );
+        return new SchedulerUpdateResponse(
                 scheduler.getId(),
                 scheduler.getContentsName(),
                 scheduler.getContents(),
