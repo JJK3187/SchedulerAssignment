@@ -37,16 +37,18 @@ public class SchedulerController {
     @PutMapping("/schedulers/{schedulerId}")
     public ResponseEntity<SchedulerUpdateResponse> update(
             @PathVariable Long schedulerId,
+            @RequestParam String password,
             @RequestBody SchedulerUpdateRequest request
     ) {
-        return ResponseEntity.status(HttpStatus.OK).body(schedulerService.update(schedulerId,  request));
+        return ResponseEntity.status(HttpStatus.OK).body(schedulerService.update(schedulerId, password, request));
     }
 
     @DeleteMapping("/schedulers/{schedulerId}")
     public ResponseEntity<Void> delete(
-            @PathVariable Long schedulerId
+            @PathVariable Long schedulerId,
+            @RequestParam String password
     ) {
-        schedulerService.delete(schedulerId);
+        schedulerService.delete(schedulerId, password);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
 }

@@ -16,7 +16,7 @@ public class SchedulerService {
 
     private final SchedulerRepository schedulerRepository;
 
-
+    // Create
     @Transactional
     public SchedulerCreateReponse save(SchedulerCreateRequest request) {
         Scheduler scheduler = new Scheduler(
@@ -35,6 +35,8 @@ public class SchedulerService {
                 saveScheduler.getModifiedAt()
         );
     }
+
+    // Read 전체
     @Transactional(readOnly = true)
     public List<SchedulerGetResponse> findAll() {
         List<Scheduler> schedulers = schedulerRepository.findAll();
@@ -53,7 +55,7 @@ public class SchedulerService {
         return dtos;
     }
 
-
+    // Read 단건
     @Transactional(readOnly = true)
     public SchedulerGetResponse findOne(Long schedulerId){
         Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
@@ -69,11 +71,16 @@ public class SchedulerService {
         );
     }
 
+    // Update
     @Transactional
-    public SchedulerUpdateResponse update(Long schedulerId, SchedulerUpdateRequest request) {
+    public SchedulerUpdateResponse update(Long schedulerId, String password, SchedulerUpdateRequest request) {
         Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
         );
+        if (!scheduler.getPassword().equals(password)) {
+            throw new IllegalStateException("비밀번호가 틀립니다.");
+        }
+
         scheduler.update(
                 request.getContentsName(),
                 request.getName()
@@ -88,11 +95,14 @@ public class SchedulerService {
         );
     }
 
+    // Delete
     @Transactional
-    public void delete(Long schedulerId) {
-        boolean existence = schedulerRepository.existsById(schedulerId);
-        if (!existence) {
-            throw new IllegalStateException("존재하지 않는 게시글 입니다.");
+    public void delete(Long schedulerId, String password) {
+        Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
+                () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
+        );
+        if (!scheduler.getPassword().equals(password)) {
+            throw new IllegalStateException("비밀번호가 틀립니다.");
         }
         schedulerRepository.deleteById(schedulerId);
     }
