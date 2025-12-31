@@ -9,8 +9,7 @@ CRUD 기능을 구현했다.
 - **일정삭제** : 고유 식별자 및 비밀번호를 통해 식별한 일정을 삭제한다.
 - 비밀번호가 필요한 경우 비밀번호가 틀릴 시 경고 문구 출력
 ## 3. API 명세서
-[API명세서 링크(PostMan)](https://documenter.getpostman.com/view/50328965/2sBXVbJtrb){:target="_blank"}
-
+<a href="https://documenter.getpostman.com/view/50328965/2sBXVbJtrb" target="_blank">API명세서 링크(PostMan)</a>
 ## 4. ERD
 <img width="830" height="850" alt="schedulers" src="https://github.com/user-attachments/assets/d12d0ff7-c820-43c8-b828-1b6c96c98da8" />
 
