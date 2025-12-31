@@ -23,8 +23,10 @@ public class SchedulerController {
     }
 
     @GetMapping("/schedulers")
-    public ResponseEntity<List<SchedulerGetResponse>> getAll(){
-        return ResponseEntity.status(HttpStatus.OK).body(schedulerService.findAll());
+    public ResponseEntity<List<SchedulerGetResponse>> getAll(
+            @RequestParam(required = false) String name
+    ){
+        return ResponseEntity.status(HttpStatus.OK).body(schedulerService.findAll(name));
     }
 
     @GetMapping("/schedulers/{schedulerId}")

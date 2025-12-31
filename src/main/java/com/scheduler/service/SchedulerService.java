@@ -38,8 +38,16 @@ public class SchedulerService {
 
     // Read 전체
     @Transactional(readOnly = true)
-    public List<SchedulerGetResponse> findAll() {
-        List<Scheduler> schedulers = schedulerRepository.findAll();
+    public List<SchedulerGetResponse> findAll(String name) {
+        List<Scheduler> schedulers;
+
+        // name 이 비어있지 않다면 name으로 검색
+        if (!name.isEmpty()) {
+            schedulers = schedulerRepository.findByNameOrderByModifiedAtDesc(name);
+        } else {
+            schedulers = schedulerRepository.findAll();
+        }
+
         List<SchedulerGetResponse> dtos = new ArrayList<>();
         for (Scheduler scheduler : schedulers) {
             SchedulerGetResponse response = new SchedulerGetResponse(
@@ -77,6 +85,7 @@ public class SchedulerService {
         Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
         );
+        // 비밀번호 확인
         if (!scheduler.getPassword().equals(password)) {
             throw new IllegalStateException("비밀번호가 틀립니다.");
         }
@@ -101,6 +110,7 @@ public class SchedulerService {
         Scheduler scheduler = schedulerRepository.findById(schedulerId).orElseThrow(
                 () -> new IllegalStateException("존재하지 않는 게시글 입니다.")
         );
+        // 비밀번호 확인
         if (!scheduler.getPassword().equals(password)) {
             throw new IllegalStateException("비밀번호가 틀립니다.");
         }
