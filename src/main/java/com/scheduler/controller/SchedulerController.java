@@ -16,7 +16,7 @@ public class SchedulerController {
     private final SchedulerService schedulerService;
 
     @PostMapping("/schedulers")
-    public ResponseEntity<SchedulerCreateReponse> create(
+    public ResponseEntity<SchedulerCreateResponse> create(
             @RequestBody SchedulerCreateRequest request
     ) {
         return ResponseEntity.status(HttpStatus.CREATED).body(schedulerService.save(request));

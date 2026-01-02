@@ -18,7 +18,7 @@ public class SchedulerService {
 
     // Create
     @Transactional
-    public SchedulerCreateReponse save(SchedulerCreateRequest request) {
+    public SchedulerCreateResponse save(SchedulerCreateRequest request) {
         Scheduler scheduler = new Scheduler(
                 request.getContentsName(),
                 request.getContents(),
@@ -26,7 +26,7 @@ public class SchedulerService {
                 request.getPassword()
         );
         Scheduler saveScheduler = schedulerRepository.save(scheduler);
-        return new SchedulerCreateReponse(
+        return new SchedulerCreateResponse(
                 saveScheduler.getId(),
                 saveScheduler.getContentsName(),
                 saveScheduler.getContents(),
