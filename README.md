@@ -11,6 +11,27 @@ CRUD 기능을 구현했다.
 - **댓글생성** : 선택한 게시글에 댓글 작성기능(10개 제한)
 ## 3. API 명세서
 <a href="https://documenter.getpostman.com/view/50328965/2sBXVbJtrb" target="_blank">API명세서 링크</a>
+<details><summary>포스트맨 작동 사진
+</summary>
+
+**Create**
+
+![title](https://velog.velcdn.com/images/gospels3187/post/e9bceb47-f61e-47aa-b503-55ef637ca18c/image.png)   
+
+**Read**
+
+![title](https://velog.velcdn.com/images/gospels3187/post/8f782595-8e81-469d-9376-63722aad701b/image.png)   
+
+**Update**
+
+![title](https://velog.velcdn.com/images/gospels3187/post/8a084bba-ba9a-4112-88ac-4eadd3909218/image.png)   
+
+**Delete**
+
+![title](https://velog.velcdn.com/images/gospels3187/post/bfa7d6b3-b71a-469e-ae5c-1465b9f9ee6b/image.png)   
+
+</details>
+
 ## 4. ERD
 <img width="830" height="850" alt="schedulers" src="https://github.com/user-attachments/assets/d12d0ff7-c820-43c8-b828-1b6c96c98da8" />
 
